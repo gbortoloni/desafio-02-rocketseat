@@ -14,7 +14,15 @@ function App() {
   }, []);
 
   async function handleAddRepository() {
-    // TODO
+    const response = await api.post("/repositories", {
+      title: "Projeto J",
+      url: "https://github.com/gbortoloni/CadastroPacientes",
+      techs: ["NodeJS, ReactJS"],
+    });
+
+    const repository = response.data;
+
+    setRepositories([...repositories, repository]);
   }
 
   async function handleRemoveRepository(id) {
